@@ -4,18 +4,22 @@ import Auth from '../routes/auth';
 import Home from '../routes/home';
 
 
-export default () => {
+const AppRouter =  () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     return(
         <Router>
             <Switch>
-                {isLoggedIn ?
+                {isLoggedIn ? (
                 <>
-                    <Route></Route>
-                </>  : <Route>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                </>) : (<Route exact path="/">
                         <Auth />
-                    </Route>}
+                    </Route>)}
             </Switch>
         </Router>
     )
 }
+
+export default AppRouter;
