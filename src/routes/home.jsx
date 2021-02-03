@@ -23,12 +23,10 @@ const Home = ({userObj}) => {
     useEffect(() => {
         // getTweets();
         dbService.collection("tweets").onSnapshot(snapshot => {
-        
         const tweetArray = snapshot.docs.map(doc => ({
             id: doc.id, ...doc.data(),
         }));
         setTweets(tweetArray)
-
         })
     }, []);
 
