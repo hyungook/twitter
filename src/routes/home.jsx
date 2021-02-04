@@ -36,23 +36,28 @@ const Home = ({userObj}) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        let attachmentUrl = "";
 
-        const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
-        const reponse = await fileRef.putString(attachment, "data_url");
+        if(attachment !== "") {
+            const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+            const reponse = await attachmentRef.putString(attachment, "data_url");
 
-        console.log(reponse);
-
-        // await dbService.collection("tweets").add({
-        //     text:tweet,
-        //     createdAt: Date.now(),
-        //     creatorId: userObj.uid,
-        // });
-        // setTweet("");
+            attachmentUrl = await reponse.ref.getDownloadURL();
+        }
+        const TweetObjet = {
+            text:tweet,
+            createdAt: Date.now(),
+            creatorId: userObj.uid,
+            attachmentUrl
+        };
+        await dbService.collection("tweets").add(TweetObjet)
+        setTweet("");
     }
 
     const onChange = (event) => {
         const {target:{value}} = event;
         setTweet(value);
+        setAttachment("");
     }
 
     console.log(tweets);
