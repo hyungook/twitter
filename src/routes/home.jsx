@@ -52,12 +52,12 @@ const Home = ({userObj}) => {
         };
         await dbService.collection("tweets").add(TweetObjet)
         setTweet("");
+        setAttachment("");
     }
 
     const onChange = (event) => {
         const {target:{value}} = event;
         setTweet(value);
-        setAttachment("");
     }
 
     console.log(tweets);
