@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { authService, dbService } from '../firebase';
 
-const Profile = ({ userObj }) => {
+const Profile = ({ refreshUser, userObj }) => {
     const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 
@@ -35,6 +35,7 @@ const onSubmit = async(event) => {
         // console.log(userObj.updataProfile);
         await userObj.updateProfile({displayName: newDisplayName});
     }
+    refreshUser();
 }
     return <>
     <form onSubmit={onSubmit}>
