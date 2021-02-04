@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import {v4 as uuidv4} from 'uuid';
 import Tweet from '../components/tweet';
-import { dbService } from '../firebase';
+import { dbService, storageService } from '../firebase';
 
 const Home = ({userObj}) => {
 
@@ -35,12 +36,18 @@ const Home = ({userObj}) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        await dbService.collection("tweets").add({
-            text:tweet,
-            createdAt: Date.now(),
-            creatorId: userObj.uid,
-        });
-        setTweet("");
+
+        const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+        const reponse = await fileRef.putString(attachment, "data_url");
+
+        console.log(reponse);
+
+        // await dbService.collection("tweets").add({
+        //     text:tweet,
+        //     createdAt: Date.now(),
+        //     creatorId: userObj.uid,
+        // });
+        // setTweet("");
     }
 
     const onChange = (event) => {

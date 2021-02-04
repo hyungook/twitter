@@ -14,7 +14,7 @@ function App() {
   
   console.log(authService.currentUser);
   
-  useEffect(() => {
+useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if(user) {
         // setIsLoggedIn(true);
