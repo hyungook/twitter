@@ -43,11 +43,9 @@ useEffect(() => {
 
   return (
   <>
-   {init ? <AppRouter
-   refreshUser={refreshUser}
-   isLoggedIn={Boolean(userObj)}
-   userObj={userObj} /> : "Initializing..." }
-    <footer>&copy; {new Date().getFullYear()}Twitter</footer>
+    {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} />
+         : "Initializing..." }
+    {/* <footer className="footer">&copy; {new Date().getFullYear()}Twitter</footer> */}
   </>);
 }
 

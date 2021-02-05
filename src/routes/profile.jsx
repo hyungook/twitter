@@ -37,13 +37,14 @@ const onSubmit = async(event) => {
     }
     refreshUser();
 }
-    return <>
-    <form onSubmit={onSubmit}>
-        <input type="text" placeholder="Display Name"  value={newDisplayName} onChange={onChange}/>
-        <input type="submit" value="Update Profile" />
-    </form>
-        <button onClick={onLogOutClick}>Log out</button>
-    </>
+    return <div className="container">
+        <form onSubmit={onSubmit} className="profileForm">
+            <input type="submit" value="Update Profile" className="formBtn" style={{ marginTop: 10,}}/>
+        </form>
+        <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+            Log Out
+        </span>
+    </div>
 }
 
 export default Profile;
