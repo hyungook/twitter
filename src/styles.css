@@ -64,6 +64,7 @@ form {
   border-radius: 20px;
   background-color: #04aaff;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .cancelBtn {
@@ -113,6 +114,7 @@ form {
   border-radius: 20px;
   font-weight: 500;
   font-size: 12px;
+  box-sizing: border-box;
 }
 
 .factoryInput__arrow {
@@ -125,6 +127,7 @@ form {
   text-align: center;
   border-radius: 20px;
   color: white;
+  box-sizing: border-box;
 }
 
 .factoryInput__label {
@@ -166,6 +169,7 @@ form {
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 5px;
+  /* box-sizing: border-box; */
 }
 
 .nweet {
