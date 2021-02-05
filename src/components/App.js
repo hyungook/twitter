@@ -12,7 +12,7 @@ function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
   
-  console.log(authService.currentUser);
+  // console.log(authService.currentUser);
   
 useEffect(() => {
     authService.onAuthStateChanged((user) => {
@@ -23,8 +23,9 @@ useEffect(() => {
           updateProfile: (args) => user.updateProfile(args)
         });
         // setUserObj(user);
-
-      } 
+      } else {
+        setUserObj(null);  //  logout
+      }
       setInit(true);
     })
   },[]);
